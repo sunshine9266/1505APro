@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<!--flexible框架是淘宝推出的一款移动端布局的框架，它是以页面平分为10份为单位进行计算的-->
+		<!--<link rel="stylesheet" href="css/iconfont.css" />
+		<link rel="stylesheet" href="css/demo.css" />-->
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="js/flexible.js" ></script>
+		<style type="text/css">
+		
+			* {
+			    margin: 0;
+			    padding: 0
+			}
+			em,i {
+			    font-style: normal
+			}
+			li {
+				
+			    /*list-style: none*/
+			}
+			img {
+			    border: 0;
+			    vertical-align: middle
+			}
+			button {
+			    cursor: pointer
+			}
+			a {
+			    color: #666;
+			    text-decoration: none
+			}
+			a:hover {
+			    color: #c81623
+			}
+		
+			.icon-guanyanren{
+				/*font-size: ;*/
+			}
+			.header{
+				display: flex;
+				align-items: center;
+				width: 100%;
+				background-color: #00aeef;
+				height: 1.243055rem;
+				/*line-height: 1.243055rem;*/
+			}
+			.left,.right{
+				width: 2.777777rem;
+			}
+			.center{
+				width: 4.444444rem;
+				border: 1px solid white;
+				height: 1.041666rem;
+				line-height: 1.041666rem;
+				flex-grow: 1; /*声明子项目默认占用剩余空间*/
+				display: flex;
+				text-align: center;
+				font-size: 0.375rem; /*font-size属性子元素是可以实现继承的*/
+			}
+			.header .center_left{
+				background: white;
+				color:#00aeef ;
+			}
+			.header .center_right{
+				color:white ;
+			}
+			.header .center_left,.header .center_right{
+				display: inline-block;  /*转为行内块*/
+				height: 100%;
+				width: 50%;
+			}
+			.header .right i{
+				float: right;
+				margin-right: 0.277777rem;
+				color: white;
+				font-size: 0.555555rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<div class="left"></div>
+			<div class="center">
+				<span class="center_left">和高校</span>
+				<span class="center_right">新闻公告</span>
+			</div>
+			<div class="right"><i class="icon-guanyanren"></i></div>
+		</div>
+		<script>
+		</script>
+	</body>
+</html>
