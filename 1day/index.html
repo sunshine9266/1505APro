@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			function getXhr(){
+				if( window.XMLHttpRequest){
+					//现代浏览器
+					var xhr = new XMLHttpRequest();
+				}else if(window.ActiveXObject){
+					//到了这里证明我用IE6以下的浏览器打开的我这个程序
+					var versions = ["Msxm12.XMLHTTP","Microsoft.XMLHTTP"];
+					for(var i = 0; i<versions.length;i++){
+						xhr = new ActiveXObject(versions[i]);
+						if(xhr){
+							//证明我这个浏览器已经声明出这个对象了，所以结束循环就行
+							//跳出循环
+							break;
+						}
+					}
+				}else{
+					console.log("浏览器不支持ajax");
+				}
+				return xhrs;
+			}
+			
+			
+			//原生的ajax的请求
+			var xhr = new XMLHttpRequest();
+			//声明核心对象的实例
+			xhr.open("get","./firstjson.json");
+			//请求打开服务器连接
+			console.log(xhr);
+			//发送请求调用Send方法
+			xhr.send(null);  
+			//null是为了兼容火狐浏览器的一个版本
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					var data = xhr.responseText
+					console.log(JSON.parse(data));
+				}
+			}
+		</script>
+	</body>
+</html>

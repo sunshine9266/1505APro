@@ -1,0 +1,13 @@
+{
+	"username": "suming",
+	"age": 28,
+	"ifmerray":true,
+	"like":"CF",
+	"friend":[{
+	"name":"fenghonfei",
+	"age":22
+	},{
+	  "name":"lihe",
+	  "age":19
+	}]
+}

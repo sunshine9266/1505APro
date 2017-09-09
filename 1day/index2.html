@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				font-size: 12px;
+				list-style: none;
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul class="u1" style="float: left;">
+			<li><img class="p1"></li>
+			<li class="d1"></li>
+			<li class="li2">¥<span class="d2"></span>起</li>
+			<li class="li3">满意度<span class="d3"></span>%</li>
+		</ul>
+		<ul class="u1" style="float: left;">
+			<li><img class="p1"></li>
+			<li class="d1"></li>
+			<li class="li2">¥<span class="d2"></span>起</li>
+			<li class="li3">满意度<span class="d3"></span>%</li>
+		</ul>
+		<ul class="u1" style="float: left;">
+			<li><img class="p1"></li>
+			<li class="d1"></li>
+			<li class="li2">¥<span class="d2"></span>起</li>
+			<li class="li3">满意度<span class="d3"></span>%</li>
+		</ul>
+		<ul class="u1" style="float: left;">
+			<li><img class="p1"></li>
+			<li class="d1"></li>
+			<li class="li2">¥<span class="d2"></span>起</li>
+			<li class="li3">满意度<span class="d3"></span>%</li>
+		</ul>
+		<script>
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "./content.json", true);
+			xhr.send(null);
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					var a = JSON.parse(xhr.responseText);
+
+					var p1 = document.getElementsByClassName("p1");
+					for(let i = 0; i < p1.length; i++) {
+						p1[i].src = a[i].src;
+					}
+					var d1 = document.getElementsByClassName("d1");
+					for(let i = 0; i < d1.length; i++) {
+						d1[i].innerHTML = a[i].js;
+					}
+					var li2 = document.getElementsByClassName("li2");
+					for(let i = 0; i < li2.length; i++) {
+						li2[i].innerHTML = a[i].jg;
+					}
+					var li3 = document.getElementsByClassName("li3");
+					for(let i = 0; i < d1.length; i++) {
+						li3[i].innerHTML = a[i].myd;
+					}
+
+				}
+			}
+		</script>
+	</body>
+
+</html>

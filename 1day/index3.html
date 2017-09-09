@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<table>
+			<tr >
+				<td>111111111111111</td>
+			</tr>
+			<tr href="#">
+				<td>222222222222222</td>
+			</tr>
+			<tr id="demo">
+				<td>333333333333333</td>
+			</tr>
+			<tr class="demo2">
+				<td>444444444444444</td>
+			</tr>
+		</table>
+		<script>
+			
+		    $(function(){
+			$('table').width(100).height(300);	
+			$('tr.demo2').css('backgroundColor','#f00');
+			$('#demo').css('backgroundColor','blue');
+			$("tr td:first").css('backgroundColor','yellow');
+			$("[href]").css('backgroundColor','green');
+		});
+		</script>
+	</body>
+</html>
