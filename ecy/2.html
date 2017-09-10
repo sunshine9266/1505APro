@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+				table{
+					border:1px solid #000;
+				}
+		</style>
+	</head>
+	<body>
+	<div id="box" style="width:300px;height:220px;border:1px solid #000">
+	</div>
+		
+	</body>
+	<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open("get","http://wthrcdn.etouch.cn/weather_mini?city=%E5%8C%97%E4%BA%AC",true);
+		xhr.send(null);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				var data = JSON.parse(xhr.responseText);
+				console.log(data.data.forecast)
+				var ts ="";
+				for(var i=0;i<=data.data.forecast.length-1;i++){
+
+					
+					ts +="<table>";
+					ts +="<tr>";
+					ts +="<td>"+data.data.forecast[i].date+"</td>";
+					ts +="<td>"+data.data.forecast[i].high+"</td>";
+					ts +="<td>"+data.data.forecast[i].fengli+"</td>";
+					ts +="<td>"+data.data.forecast[i].fengxiang+"</td>";
+					ts +="<td>"+data.data.forecast[i].low+"</td>";
+					ts +="<td>"+data.data.forecast[i].type+"</br>"+"</td>";
+					ts +="</tr>";
+
+					ts +="</table>";
+					box.innerHTML = ts;
+				}
+			}
+		}
+	</script>
+</html>

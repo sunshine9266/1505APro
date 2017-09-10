@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+		class parent{
+			constructor(a,b){
+				this.a = a;
+				this.b = b;
+			}
+		}
+		class child extends parent{
+			constructor(name,age){
+				super(name,age);
+				this.name = name;
+				this.age = age;
+			}
+		}
+		let c = new child("name");
+		console.log(c.a)
+	</script>
+</html>
