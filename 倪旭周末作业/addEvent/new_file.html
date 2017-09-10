@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			type:"get",
+			url:"http://guoxiao158.top/toutiao.php?type=tiyu",
+			async:true,
+			success:function(data){
+				console.log(data)
+			}
+		});
+	})
+</script>

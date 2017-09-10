@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			一. 使用QueryString变量
+    QueryString是一种非常简单也是使用比较多的一种传值方式，但是它将传递的值显示在浏览器的地址栏中,如果是传递一个或多个安全性要求不高或是结构简单的数值时，可以使用这个方法。
+         Response.Redirect( "target.aspx?param1=hello¶m2=hi ") 
+        接收页面：   string   str   =   Request.QueryString["param1"]; 
+                               string   str1   = Request.QueryString["param2];
+二.使用Cookie对象变量(Cookie是存放在客户端的)
+       设置Cookie:   HttpCookie cookie_name = new HttpCookie("name");
+                         cookie_name.Value = Label1.Text;
+                         Reponse.AppendCookie(cookie_name);
+    
+          获取Cookie:
+                       string name= Request.Cookie["name"].Value.ToString();
+三. 使用Session变量(session是存放在服务器端的)
+  设置Session:      Session["name"] ="hello";
+        获取Session:        string name = Session["name"].ToString();
+四.使用Application 对象变量
+  Application对象的作用范围是整个全局，也就是说对所有用户都有效。此种方法不常使用，因为Application在一个应用程序域范围共享，所有用户可以改变及设置其值，故只应用计数器等需要全局变量的地方。 
+        设置Application :    Application["name"] = ="hello";
+        获取Application :     string   name = Application["name"].ToString();
+五. PostBackUrl()方法
+     default.aspx页面：
+Code
+1 <asp:Button ID="Button1" Runat="server" Text="PostToAnotherPage" PostBackUrl="~/Default2.aspx" />
+2
+default2.aspx页面：
+Code
+1 if (PreviousPage != null)
+2        {
+3            TextBox textBox1 = (TextBox)PreviousPage.FindControl("TextBox1");
+4           Response.write(textBox1.Text );
+5        }
+六.使用Server.Transfer方法
+    这个才可以说是面象对象开发所使用的方法，其使用Server.Transfer方法把流程从当前页面引导到另一个页面中，新的页面使用前一个页面的应答流，所以这个方法是完全面象对象的，简洁有效。下面这个代码是展示在需要很多个参数的时候,使用的方法,如果参数比较少就没必要使用这个方法了.
+如果让所有的查询页面都继承一个接口，在该接口中定义一个方法，该方法的唯一作用就是让结果页面获得构建结果时所需的参数,就可实现多页面共享一个结果页面操作！
+		-->
+	</body>
+</html>

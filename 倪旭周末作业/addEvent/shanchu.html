@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+			<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+		<table class="table table-bordered tab-content table-striped">
+			<tr>
+				<th>id</th>
+				<th>username</th>
+				<th>password</th>
+				<th>phone</th>
+				<th>caozuo</th>
+			</tr>
+		</table>
+	</body>
+	<script>
+		function aja(){
+			$.ajax({
+				type:"post",
+				url:"http://127.0.0.1:8100/1505A/getAll",
+				success:function(data){
+					var a = "";
+					var b = data.length;
+					for(var i = 0;i<b;i++){
+						a += "<tr>";
+						a += "<td>"+data[i].id+"</td>";
+						a += "<td>"+data[i].username+"</td>";
+						a += "<td>"+data[i].password+"</td>";
+						a += "<td>"+data[i].phone+"</td>";
+						a += "<td><button class='btn btn-danger' onclick='del("+data[i].id+")'>删除</button></td>";
+						a += "</tr>";
+					}
+					$("table").append(a)
+				},
+				error:function(){
+					console.log("获取数据失败");
+				}
+			});
+		}
+		aja();
+		function del(id){
+			$.ajax({
+				type:"post",
+				data:{"id":id},
+				url:"http://127.0.0.1:8100/1505A/getAbb"
+			});
+			window.location.href = "shanchu.html";
+		}
+		
+	</script>
+</html>

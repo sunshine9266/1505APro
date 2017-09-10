@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+	    function thousandBitSeparator(num) {
+			num = num.toString().replace(/(?=(?!^)(\d{3})+$)/g, ',');
+			return num;
+		}
+		console.log(thousandBitSeparator(99999999));
+	</script>
+</html>
