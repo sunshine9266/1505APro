@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.2.3.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			#ul{
+				list-style: none;
+				height: 1.730769rem;
+				width: 100%;
+				background-color: #CCCCCC;
+			}
+			#ul li{
+				float: left;
+				width: 14%;
+				text-align: center;
+			}
+			img{
+				width: 32%;
+				text-align: center;
+			}
+			#a{
+				margin: 0.576923rem;
+				display: block;
+				margin-bottom: 10%;
+			}
+		</style>
+	</head>
+	<body>
+    <header style="font-size: 1.538461rem;margin: 0.461538rem;"><span class="glyphicon glyphicon-file"></span>UC头条<span style="float: right;" class="glyphicon glyphicon-search"></span></header>
+    <ul id="ul">
+    	<li>推荐</li>
+    	<li>视频</li>
+    	<li style="color: blue;">体育</li>
+    	<li>名家</li>
+    	<li>娱乐</li>
+    	<li>科技</li>
+    	<li>＋</li>
+    </ul>
+    <ul v-for="data in arr">
+    	<li id="a">
+    		
+    	</li>
+    </ul>
+	</body>
+	<script type="text/javascript">
+		$.ajax({
+			url:"http://guoxiao158.top/toutiao.php?type=tiyu",
+			type:"get",
+			dataType:"json",
+			success:function(data){
+				var a = data.result.data;
+				console.log(a);
+				var b = "";
+				for(var i=0;i<a.length;i++){
+					b += "<h4 style='clear:both; border-top: 1px solid silver; padding-top: 2%;'>"+a[i].title+"</h4>";
+		    		b += "<div style='float: right; width: 100%;'>";
+		    		b += "<img src='"+a[i].thumbnail_pic_s+"'/>";
+		    	  	b += "<img src='"+a[i].thumbnail_pic_s02+"'/>";
+		      		b += "<img src='"+a[i].thumbnail_pic_s03+"'/></div>";
+		    		b += "<span style='margin-top: 2%; display: block; float: left;'>"+a[i].date+"</span>";
+		    		b += "<span style='margin-top: 2%; display: block; float: left; margin-left: 1%;'>"+a[i].author_name+"</span>";
+		    		b += "<span style='margin-top: 1%; display: block; float: right; margin-right: 3%; font-size: 1.730769rem;'>×</span>";
+				}
+				$("#a").append(b);
+			},
+			error:function(){
+				alert(2);
+			}
+		})
+	</script>
+</html>

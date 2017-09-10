@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">asda</button>
+	</body>
+	<script>
+		var btn = document.getElementById("btn");
+		btn.onclick=add1();
+		function add1(){console.log("one")};
+		btn.onclick=add2();
+		function add2(){console.log("two")};
+		//不需要点击 控制台 都会输出 原因 我不知道
+		//连量提升
+		//变量提升是把函数内的变量提升到函数顶部 但是并不提升赋予的值
+		//使用ES6的let 或者 const 来定义变量 就不会有变量提升
+		
+		function thousandBitSeparator(num) {
+			num = num.toString().replace(/(?=(?!^)(\d{3})+$)/g, ',');
+			return num;
+		}
+		console.log(thousandBitSeparator(99999999));
+	</script>
+</html>

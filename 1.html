@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+		class fu{
+			constructor(a,b){
+				this.a = a;
+				this.b = b;
+			}
+		}
+		class zi extends fu{
+			constructor(name,age){
+				super(name,age);
+				this.name = name;
+				this.age = age;
+			}
+		}
+		let c = new zi("这是子类的name");
+		document.write(c.a)
+	</script>
+</html>

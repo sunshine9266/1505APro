@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.2.3.js"></script>
+	</head>
+	<body>
+	</body>
+	<script>
+		$.ajax({
+			url:"http://wthrcdn.etouch.cn/weather_mini?city=%E5%8C%97%E4%BA%AC",
+			type:"get",
+			dataType:"json",
+			success:function(data){
+				for(var i=0;i<=data.data.forecast.length-1;i++){
+					document.write(data.data.forecast[i].date);
+					document.write(data.data.forecast[i].high);
+					document.write(data.data.forecast[i].fengli);
+					document.write(data.data.forecast[i].fengxiang);
+					document.write(data.data.forecast[i].low);
+					document.write(data.data.forecast[i].type+"</br>");
+				}
+			},
+			error:function(){
+				alert(2);
+			}
+		})
+	</script>
+</html>

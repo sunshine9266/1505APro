@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width:230px;
+				height:200px;
+				margin:0 auto;
+				text-align:center;
+			}
+			.box div{
+				width:100px;
+				height:50px;
+				margin:0 auto;
+				margin-top:10px;
+			}
+			.box div button{
+				width:100px;
+				height:30px;
+				border-radius:10px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	</head>
+	<body>
+		<div class="box">
+			<h3>注册账号</h3>
+			账号：<input type="text" id="username"/>
+			密码：<input type="text" id="psd"/>
+			电话：<input type="text" id="tel"/>
+			<div><button id="btn">注册</button></div>
+		</div>
+	</body>
+	<script>
+		$(function(){
+			var btn = $("#btn");
+			btn[0].addEventListener("click",function(){
+				var username = $("#username").val();
+				var psd = $("#psd").val();
+				var tel = $("#tel").val();
+				$.ajax({
+					type:"post",
+					url:"http://127.0.0.1:8100/1505A/getAcc",
+					data:{"user":username,"psd":psd,"tel":tel},
+					success:function(data){
+					if(typeof data == "object"){
+						alert("注册成功");
+						window.location.href = "index.html";
+					}else{
+						alert("注册失败");
+					}
+					},
+					error:function(){
+						console.log(注册失败);
+					}
+				})
+			},false);
+		})
+	</script>
+</html>

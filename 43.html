@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title> 
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<style type="text/css">
+			table{
+				margin:0 auto;
+				text-align:center;
+			}
+		</style>
+	</head>
+		<div style="width:300px;margin:0 auto;"><input type="text" id="like" style="border:2px solid #000;"/><button id="cx" style="margin-left:80px;">查询</button></div>
+		<table border="1" cellspacing="0" cellpadding="0">
+			<tr>
+				<th>id</th>
+				<th>username</th>
+				<th>passworld</th>
+				<th>phone</th>
+				<th>caozuo</th>
+			</tr>
+		</table>
+		<div style="display:none;width:200px;margin:0 auto;">
+			username<input type="text" id="qda"/>
+			passworld<input type="text" id="qdb"/>
+			phone<input type="text" id="qdc"/>
+			<button id="qd">确定</button>
+		</div>
+	</body>
+	<script>
+		function aja(){
+			$.ajax({
+				type:"post",
+				url:"http://127.0.0.1:8100/1505A/getAll",
+				success:function(data){
+					var a = "";
+					var b = data.length;
+					for(var i = 0;i<b;i++){
+						a += "<tr>";
+						a += "<td>"+(i+1)+"</td>";
+						a += "<td>"+data[i].username+"</td>";
+						a += "<td>"+data[i].passworld+"</td>";
+						a += "<td>"+data[i].phone+"</td>";
+						a += "<td><button onclick='update("+data[i].id+")'>修改</button><button onclick='del("+data[i].id+")'>删除</button></td>";
+						a += "</tr>";
+					}
+					$("table").append(a)
+				},
+				error:function(){
+					console.log("获取数据失败");
+				}
+			});
+		}
+		aja();
+		function del(id){
+			$.ajax({
+				type:"post",
+				data:{"id":id},
+				url:"http://127.0.0.1:8100/1505A/getAbb"
+			});
+			window.location.href = "zhuye.html";
+		}
+		$("#cx").click(function(){
+			var like = $("#like").val();
+			$.ajax({
+				url:"http://127.0.0.1:8100/1505A/getlike",
+				data:{"like":like},
+				type:"post",
+				success:function(data){
+					console.log(data)
+					var b = data.length;
+					a = "";
+					a += "<tr><th>id</th><th>username</th><th>passworld</th><th>phone</th><th>caozuo</th></tr>";
+					for(var i = 0;i<b;i++){
+						a += "<tr>";
+						a += "<td>"+(i+1)+"</td>";
+						a += "<td>"+data[i].username+"</td>";
+						a += "<td>"+data[i].passworld+"</td>";
+						a += "<td>"+data[i].phone+"</td>";
+						a += "<td><button onclick='update("+data[i].id+")'>修改</button><button onclick='del("+data[i].id+")'>删除</button></td>";
+						a += "</tr>";
+					}
+					var tab = $("table");
+					tab.empty();
+					tab.append(a)
+				}
+			})
+		})
+		function update(id){
+			$("div").css("display","block");
+			$("#qd").click(function(){
+				var a = $("#qda").val();
+				var b = $("#qdb").val();
+				var c = $("#qdc").val();
+				$.ajax({
+					type:"post",
+					url:"http://127.0.0.1:8100/1505A/getupdate",
+					data:{"a":a,"b":b,"c":c,"id":id},
+					success:function(data){
+						console.log(data);
+						alert("修改成功");
+						 window.location.reload();//刷新当前页面
+					},
+					error:function(){
+						console.log("失败")
+					}
+				})
+			})
+		}
+	</script>
+</html>

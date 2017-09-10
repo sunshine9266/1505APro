@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table></table>
+	</body>
+	<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open("get","http://wthrcdn.etouch.cn/weather_mini?city=%E5%8C%97%E4%BA%AC",true);
+		xhr.send(null);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				var data = JSON.parse(xhr.responseText);
+				console.log(data.data.forecast)
+				for(var i=0;i<=data.data.forecast.length-1;i++){
+					document.write(data.data.forecast[i].date);
+					document.write(data.data.forecast[i].high);
+					document.write(data.data.forecast[i].fengli);
+					document.write(data.data.forecast[i].fengxiang);
+					document.write(data.data.forecast[i].low);
+					document.write(data.data.forecast[i].type+"</br>");
+				}
+			}
+		}
+	</script>
+</html>
